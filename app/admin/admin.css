@@ -1,0 +1,88 @@
+.login-wrap { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+.login-card { width: min(420px, 100%); background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 36px 32px; }
+.login-card h1 { font-family: var(--heading); font-size: 24px; letter-spacing: -.5px; margin-bottom: 8px; }
+.login-card > p { color: var(--gray); font-size: 13px; line-height: 1.7; margin-bottom: 26px; }
+
+.form { display: flex; flex-direction: column; gap: 16px; }
+.form label { display: flex; flex-direction: column; gap: 7px; font-size: 12px; font-weight: 600; color: var(--gray); }
+.form input, .form textarea {
+  background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
+  color: var(--white); padding: 12px 14px; font: inherit; font-size: 14px;
+}
+.form input:focus, .form textarea:focus { outline: 2px solid var(--blue); outline-offset: 1px; border-color: transparent; }
+.form button { cursor: pointer; border: 0; }
+.form button:disabled { opacity: .6; cursor: wait; }
+.form-error { color: #ff7a7a; font-size: 13px; }
+.form-ok { color: #6fdc9a; font-size: 13px; }
+
+.admin-shell { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+.admin-side {
+  background: var(--bg-secondary); border-right: 1px solid var(--border);
+  padding: 28px 20px; display: flex; flex-direction: column; gap: 28px;
+  position: sticky; top: 0; height: 100vh;
+}
+.admin-brand { font-family: var(--heading); font-size: 20px; font-weight: 700; }
+.admin-brand span { color: var(--blue); }
+.admin-side nav { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.admin-side nav a { padding: 10px 12px; border-radius: 6px; font-size: 13px; color: var(--gray); transition: .2s; }
+.admin-side nav a:hover { background: rgba(232,117,50,.12); color: var(--blue-light); }
+.admin-user { display: flex; flex-direction: column; gap: 10px; }
+.admin-user small { color: var(--gray); font-size: 11px; overflow-wrap: anywhere; }
+.admin-user .btn { width: 100%; cursor: pointer; background: none; padding: 10px; }
+.admin-main { padding: 40px; max-width: 900px; }
+.admin-title { font-family: var(--heading); font-size: 28px; letter-spacing: -1px; }
+.admin-sub { color: var(--gray); font-size: 13px; margin: 8px 0 28px; }
+.panel-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 28px; max-width: 460px; }
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+.stat { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+.stat strong { display: block; font-family: var(--heading); font-size: 30px; color: var(--blue-light); }
+.stat span { font-size: 12px; color: var(--gray); }
+
+@media (max-width: 768px) {
+  .admin-shell { grid-template-columns: 1fr; }
+  .admin-side { position: static; height: auto; flex-direction: row; flex-wrap: wrap; align-items: center; padding: 16px 5%; gap: 14px; }
+  .admin-side nav { flex-direction: row; flex-wrap: wrap; flex: 1 1 100%; order: 3; }
+  .admin-user { flex-direction: row; align-items: center; margin-left: auto; }
+  .admin-user .btn { width: auto; }
+  .admin-main { padding: 28px 5%; }
+}
+
+/* ---------- Passo 3: formulários e listas ---------- */
+.form textarea { resize: vertical; line-height: 1.6; }
+.form-hint { font-size: 11px; font-weight: 400; color: var(--gray); opacity: .8; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.profile-form { max-width: 720px; }
+.profile-form fieldset { border: 1px solid var(--border); border-radius: 10px; padding: 22px; display: flex; flex-direction: column; gap: 16px; background: var(--card); }
+.profile-form legend { padding: 0 8px; font-family: var(--heading); font-size: 14px; color: var(--blue-light); }
+.upload-row { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.upload-row label { flex: 1; min-width: 220px; }
+.form input[type="file"] { padding: 9px; font-size: 12px; }
+.thumb { width: 72px; height: 88px; object-fit: cover; object-position: top; border-radius: 36px 36px 6px 6px; border: 1px solid var(--border); }
+
+.new-item { max-width: none; margin-bottom: 24px; }
+.new-item > summary, .item-card details > summary { cursor: pointer; font-size: 13px; font-weight: 700; color: var(--blue-light); list-style: none; }
+.new-item > summary::-webkit-details-marker, .item-card summary::-webkit-details-marker { display: none; }
+.new-item .item-form { margin-top: 20px; max-width: 560px; }
+
+.item-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.item-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; }
+.item-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 12px; }
+.item-title { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.item-title > i { color: var(--blue-light); font-size: 18px; width: 24px; text-align: center; }
+.item-title strong { display: block; font-size: 14px; line-height: 1.5; }
+.item-title small { color: var(--gray); font-size: 12px; }
+.item-actions { display: flex; gap: 6px; flex-shrink: 0; }
+.icon-btn { background: var(--bg); border: 1px solid var(--border); color: var(--white); border-radius: 6px; padding: 7px 11px; font-size: 12px; cursor: pointer; transition: .2s; }
+.icon-btn:hover:not(:disabled) { border-color: var(--blue); color: var(--blue-light); }
+.icon-btn:disabled { opacity: .3; cursor: not-allowed; }
+.icon-btn.danger:hover { border-color: #ff7a7a; color: #ff7a7a; }
+.item-card details[open] > summary { margin-bottom: 18px; }
+.item-card .item-form { max-width: 560px; }
+
+.icon-field { display: flex; align-items: center; gap: 10px; }
+.icon-field input { flex: 1; }
+.icon-preview { width: 42px; height: 42px; display: grid; place-items: center; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--blue-light); font-size: 18px; }
+.stat { display: block; transition: .2s; }
+a.stat:hover { border-color: var(--blue); transform: translateY(-3px); }
+
+@media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } .item-head { flex-direction: column; align-items: flex-start; } }

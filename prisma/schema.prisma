@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Admin {
+  id           Int    @id @default(autoincrement())
+  email        String @unique
+  passwordHash String
+}
+
+// Linha única (id = 1) com os dados gerais do portfólio
+model Profile {
+  id           Int     @id @default(1)
+  fullName     String
+  heroLabel    String
+  heroText     String
+  heroBadge    String
+  heroBadgeSub String
+  aboutQuote   String
+  aboutText    String  // parágrafos separados por uma linha em branco
+  photoUrl     String?
+  cvUrl        String?
+  email        String
+  phone1       String
+  phone2       String?
+  whatsapp     String
+  facebook     String?
+  linkedin     String?
+}
+
+model Experience {
+  id      Int    @id @default(autoincrement())
+  date    String
+  title   String
+  company String
+  text    String
+  order   Int    @default(0)
+}
+
+model Education {
+  id    Int    @id @default(autoincrement())
+  title String
+  text  String
+  icon  String @default("fa-graduation-cap")
+  order Int    @default(0)
+}
+
+model Skill {
+  id    Int    @id @default(autoincrement())
+  text  String
+  icon  String @default("fa-check")
+  order Int    @default(0)
+}
+
+model Course {
+  id    Int    @id @default(autoincrement())
+  name  String
+  icon  String @default("fa-book-open")
+  order Int    @default(0)
+}
+
+model Language {
+  id      Int    @id @default(autoincrement())
+  name    String
+  level   String
+  percent Int
+  order   Int    @default(0)
+}
+
+// Controlo de tentativas de login (limite por IP + e-mail)
+model LoginAttempt {
+  key     String   @id
+  count   Int      @default(1)
+  resetAt DateTime
+}
